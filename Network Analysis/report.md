@@ -1,22 +1,22 @@
 <strong>Network Security Analysis & Incident Response Evaluation</strong>
 
-Project Type: Network Traffic Analysis · Incident Response · SOC Fundamentals
-Tools: Wireshark
-Frameworks: CyBOK Incident Response Model, SANS Incident Handler’s Handbook
-Date: October 25, 2025
+<strong>Project Type:</strong> Network Traffic Analysis · Incident Response · SOC Fundamentals<br>
+<strong>Tools:</strong> Wireshark<br>
+<strong>Frameworks:</strong> CyBOK Incident Response Model, SANS Incident Handler’s Handbook<br>
+<strong>Date:</strong> October 25, 2025
 
-Analyst: Yohanna Paul Sheawaza
+<strong>Analyst:</strong> Yohanna Paul Sheawaza
 
- Confidentiality Notice:
+ <strong>Confidentiality Notice:</strong>
 
 This project simulates an internal SOC investigation scenario. All IP addresses, traffic, and findings are based on controlled lab data and are used strictly for educational and portfolio purposes.
 
 
- Executive Summary:
+ <strong>Executive Summary:</strong>
 
 This project documents the investigation of a multi-stage internal network compromise identified through detailed packet capture (PCAP) analysis. The analysis revealed a critical security posture failure, driven by the continued use of an insecure legacy protocol and the absence of layered defensive controls.
 
-Key Findings:
+<strong>Key Findings:</strong>
 
 The investigation confirmed three concurrent attack vectors:
 	1.	Credential Compromise via FTP Brute-Force Attacks
