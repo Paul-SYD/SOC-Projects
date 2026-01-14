@@ -1,4 +1,4 @@
-Network Security Analysis & Incident Response Evaluation
+<strong>Network Security Analysis & Incident Response Evaluation</strong>
 
 Project Type: Network Traffic Analysis · Incident Response · SOC Fundamentals
 Tools: Wireshark
