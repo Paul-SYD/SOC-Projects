@@ -126,8 +126,6 @@ The analysis uncovered multiple overlapping security incidents, confirming an ac
  iii. Desccription: New host targeted by original attacker<br>
  iv. Severity: High<br>
 
- ![Screenshot](Screenshots/Ss8.jpeg)
-
 
 
 **Capture 6:** Suspicious login<br>
