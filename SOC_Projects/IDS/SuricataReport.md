@@ -30,30 +30,30 @@ Attacker Machine: Kali Linux VM
 
 1. Navigated to the official Suricata website: https://suricata.io
 
- ![Suricata](Suricata-SS/suricata1)
+ ![Suricata](Suricata-SS/suricata1.png)
 
 2. Accessed the documentation section for Ubuntu package installation.
 
- ![Suricata](Suricata-SS/suricata2)
+ ![Suricata](Suricata-SS/suricata2.png)
 
 3. Added the OISF Suricata repository:
   sudo add-apt-repository ppa:oisf/suricata-stable
 
-  ![Suricata](Suricata-SS/suricata3)
+  ![Suricata](Suricata-SS/suricata3.png)
 
 4. Updated the package list and installed Suricata:
    sudo apt-get update
 
-    ![Suricata](Suricata-SS/suricata4)
+    ![Suricata](Suricata-SS/suricata4.png)
 
    sudo apt-get install suricata -y
 
-    ![Suricata](Suricata-SS/suricata5)
+    ![Suricata](Suricata-SS/suricata5.png)
 
 5. Verified the status of Suricata:
    sudo systemctl status suricata
 
-   ![Suricata](Suricata-SS/suricata6)
+   ![Suricata](Suricata-SS/suricata6.png)
 
 
 5.2 Troubleshooting Suricata Service
@@ -61,13 +61,13 @@ Attacker Machine: Kali Linux VM
 
 sudo suricata-update
 
-![Suricata](Suricata-SS/suricata7)
+![Suricata](Suricata-SS/suricata7.png)
 
 sudo systemctl daemon-reload
 sudo systemctl restart suricata
 sudo systemctl status suricata
 
-![Suricata](Suricata-SS/suricata8)
+![Suricata](Suricata-SS/suricata8.png)
 
 Suricata should display an **active (running)** status after these steps.
 
@@ -78,7 +78,7 @@ Suricata should display an **active (running)** status after these steps.
  A dedicated directory was created to store all Suricata rules:
   sudo mkdir -p /etc/suricata/rules
 
-  ![Suricata](Suricata-SS/suricata9)
+  ![Suricata](Suricata-SS/suricata9.png)
 
 
 Each detection rule was placed in a separate file for better organization and management.
@@ -88,7 +88,7 @@ Each detection rule was placed in a separate file for better organization and ma
 File:/etc/suricata/rules/icmp.rules
 alert icmp any any -> any any (msg:"ICMP Ping Detected"; itype:8; sid:100001; rev:1;)
 
-![Suricata](Suricata-SS/suricata10)
+![Suricata](Suricata-SS/suricata10.png)
 
 This rule detects ICMP echo request (ping) activity.
 
@@ -99,7 +99,7 @@ alert tcp any any -> any any (msg:"Nmap SYN Scan Detected"; flags:S; threshold:t
 alert tcp any any -> any any (msg:"Nmap Null Scan Detected"; flags:0; sid:1000004; rev:1;)
 alert tcp any any -> any any (msg:"Nmap FIN Scan Detected"; flags:F; sid:1000005; rev:1;)
 
-![Suricata](Suricata-SS/suricata11)
+![Suricata](Suricata-SS/suricata11.png)
 
 These rules detect common Nmap scanning techniques.
 
@@ -109,7 +109,7 @@ File: /etc/suricata/rules/hping3.rules
 alert tcp any any -> any any (msg:"Possible hping3 TCP Packet Flood"; flags:S; threshold:type both, track by_src, count 20, seconds 1; sid:1000006; rev:1;)
 alert icmp any any -> any any (msg:"hping3 ICMP Flood Detected"; threshold:type both, track by_src, count 10, seconds 1; sid:1000007; rev:1;)
 
- ![Suricata](Suricata-SS/suricata12)
+ ![Suricata](Suricata-SS/suricata12.png)
 
 These rules detect packet flooding attacks generated using hping3.
 
@@ -118,7 +118,7 @@ These rules detect packet flooding attacks generated using hping3.
 File: /etc/suricata/rules/ssh.rules
 alert tcp any any -> any 22 (msg:"Possible SSH Bruteforce"; flow:to_server; threshold:type both; sid:1000009; rev:1;)
 
- ![Suricata](Suricata-SS/suricata13)
+ ![Suricata](Suricata-SS/suricata13.png)
 
 This rule detects suspicious SSH connection attempts.
 
@@ -133,11 +133,11 @@ HOME_NET was set to:
  [192.168.72.0/24]
 EXTERNAL_NET was left as `any`.
 
- ![Suricata](Suricata-SS/suricata14)
+ ![Suricata](Suricata-SS/suricata14.png)
 
  Network interface was set to `ens33`.
 
- ![Suricata](Suricata-SS/suricata15)
+ ![Suricata](Suricata-SS/suricata15.png)
 
 All custom rule files were added:
   /etc/suricata/rules/icmp.rules
@@ -145,7 +145,7 @@ All custom rule files were added:
   /etc/suricata/rules/hping3.rules
   /etc/suricata/rules/ssh.rules
 
-  ![Suricata](Suricata-SS/suricata16)
+  ![Suricata](Suricata-SS/suricata16.png)
 
 
 8. Testing and Validation
@@ -153,22 +153,22 @@ All custom rule files were added:
 8.1 ICMP Test:
  ping target-ip
 
- ![Suricata](Suricata-SS/suricata17)
+ ![Suricata](Suricata-SS/suricata17.png)
 
 8.2 Nmap Scan Test
  nmap -sS target-ip
 
- ![Suricata](Suricata-SS/suricata18)
+ ![Suricata](Suricata-SS/suricata18.png)
 
 8.3 hping3 Flood Test
  sudo hping3 -S --flood -V target-ip
 
- ![Suricata](Suricata-SS/suricata19)
+ ![Suricata](Suricata-SS/suricata19.png)
 
 8.4 SSH Test
  ssh user@target-ip
 
- ![Suricata](Suricata-SS/suricata20)
+ ![Suricata](Suricata-SS/suricata20.png)
 
 
 9. Results and Log Analysis
@@ -184,19 +184,19 @@ sudo tail -f /var/log/suricata/fast.log
 
 Icmp Suricata Test Result
 
- ![Suricata](Suricata-SS/suricata21)
+ ![Suricata](Suricata-SS/suricata21.png)
 
 Nmap Suricata Test Result
 
- ![Suricata](Suricata-SS/suricata22)
+ ![Suricata](Suricata-SS/suricata22.png)
 
 hping3 Suricata Test Result
 
- ![Suricata](Suricata-SS/suricata23)
+ ![Suricata](Suricata-SS/suricata23.png)
 
 SSH Suricata Test Result
 
- ![Suricata](Suricata-SS/suricata24)
+ ![Suricata](Suricata-SS/suricata24.png)
 
 The logs confirmed successful detection of all simulated attack activities.
 
